@@ -2,30 +2,40 @@ services:
   League\OAuth2\Server\Repositories\ClientRepositoryInterface:
     class: sonrac\Auth\Repository\Clients
     public: true
-    arguments: ['@doctrine', '@service_container']
+    arguments: ['@doctrine', 'sonrac\Auth\Entity\Client']
+    tags: ['doctrine.repository_service']
   League\OAuth2\Server\Repositories\ScopeRepositoryInterface:
     class: sonrac\Auth\Repository\Scopes
     public: true
     arguments: ['@doctrine']
+    tags: ['doctrine.repository_service']
   League\OAuth2\Server\Repositories\RefreshTokenRepositoryInterface:
     class: sonrac\Auth\Repository\RefreshTokens
     public: true
     arguments: ['@doctrine']
+    tags: ['doctrine.repository_service']
   League\OAuth2\Server\Repositories\AccessTokenRepositoryInterface:
     class: sonrac\Auth\Repository\AccessTokens
     public: true
     arguments: ['@doctrine', '@service_container']
+    tags: ['doctrine.repository_service']
   League\OAuth2\Server\Repositories\AuthCodeRepositoryInterface:
     class: sonrac\Auth\Repository\AuthCodes
     public: true
     arguments: ['@doctrine', '@service_container']
+    tags: ['doctrine.repository_service']
   League\OAuth2\Server\Repositories\UserRepositoryInterface:
     class: sonrac\Auth\Repository\Users
     public: true
-    tags: ['doctrine.repository_service']
     arguments: ['@doctrine']
+    tags: ['doctrine.repository_service']
+
   sonrac\Auth\Repository\Users:
     alias: League\OAuth2\Server\Repositories\UserRepositoryInterface
+    public: true
+#    arguments: ['@doctrine']
+#    tags: ['doctrine.repository_service']
+
   League\OAuth2\Server\Entities\ClientEntityInterface:
     class: sonrac\Auth\Entity\Client
     public: true
@@ -49,7 +59,9 @@ services:
     arguments: ['@service_container']
   sonrac_auth.custom_token_validator:
     class: sonrac\Auth\Security\TokenValidator
+    public: true
     arguments: ['@League\OAuth2\Server\Repositories\AccessTokenRepositoryInterface','%sonrac_auth.header_token_name%']
+
   sonrac_auth.resource_server:
     class: League\OAuth2\Server\ResourceServer
     public: true

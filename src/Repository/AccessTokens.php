@@ -26,6 +26,13 @@ class AccessTokens extends ServiceEntityRepository implements AccessTokenReposit
     use TokenEntityTrait;
 
     /**
+     * Token entity.
+     *
+     * @var \League\OAuth2\Server\Entities\AccessTokenEntityInterface|null
+     */
+    protected $token;
+
+    /**
      * Access token entity classname.
      *
      * @var string
@@ -36,12 +43,30 @@ class AccessTokens extends ServiceEntityRepository implements AccessTokenReposit
      * AccessTokens constructor.
      *
      * @param \Symfony\Bridge\Doctrine\RegistryInterface $registry
-     * @param ContainerInterface                         $container
      */
-    public function __construct(RegistryInterface $registry, ContainerInterface $container)
+    public function __construct(RegistryInterface $registry)
     {
-        $this->container = $container;
         parent::__construct($registry, AccessToken::class);
+    }
+
+    /**
+     * Set access token entity.
+     *
+     * @param \League\OAuth2\Server\Entities\AccessTokenEntityInterface $token
+     */
+    public function setToken(AccessTokenEntityInterface $token)
+    {
+        $this->token = $token;
+    }
+
+    /**
+     * Get access token entity.
+     *
+     * @return \League\OAuth2\Server\Entities\AccessTokenEntityInterface|null
+     */
+    public function getToken(): ?AccessTokenEntityInterface
+    {
+        return $this->token;
     }
 
     /**
@@ -51,23 +76,17 @@ class AccessTokens extends ServiceEntityRepository implements AccessTokenReposit
      */
     public function getNewToken(ClientEntityInterface $clientEntity, array $scopes, $userIdentifier = null)
     {
-        /** @var \sonrac\Auth\Entity\Client $clientEntity */
-        $token = $this->container->get(AccessTokenEntityInterface::class);
-
-        $token->setGrantType($this->container->get('request_stack')->pop()->get('grant_type'));
-
-        $token->setClient($clientEntity);
+        $this->getToken()->setClient($clientEntity);
 
         if ($userIdentifier) {
             $this->setUserIdentifier($userIdentifier);
         }
 
-        return $token;
+        return $this->getToken();
     }
 
     /**
-     * @param \sonrac\Auth\Entity\AccessToken|AccessTokenEntityInterface $accessTokenEntity
-     *                                                                                      {@inheritdoc}
+     *{@inheritdoc}
      */
     public function persistNewAccessToken(AccessTokenEntityInterface $accessTokenEntity)
     {

@@ -1,9 +1,9 @@
 security:
   providers:
-#    oauth_client:
-#      entity:
-#        class: sonrac\Auth\Providers\ClientProvider
-#        property: token
+    oauth_client:
+      entity:
+        class: sonrac\Auth\Providers\ClientProvider
+        property: token
     oauth_user:
 #      id: sonrac_auth.user_provider
       entity:

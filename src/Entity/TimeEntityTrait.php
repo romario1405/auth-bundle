@@ -16,9 +16,9 @@ trait TimeEntityTrait
      *
      * @return int
      */
-    public function getCreatedAt(): int
+    public function getCreatedAt(): \DateTime
     {
-        return (int) ($this->{$this->getCreatedAtFieldName()});
+        return $this->{$this->getCreatedAtFieldName()};
     }
 
     /**
@@ -38,7 +38,7 @@ trait TimeEntityTrait
      */
     public function setCreatedAt($created_at): void
     {
-        $this->{$this->getCreatedAtFieldName()} = (int) $created_at;
+        $this->setTimeField($created_at, $this->getCreatedAtFieldName());
     }
 
     /**
@@ -68,6 +68,31 @@ trait TimeEntityTrait
      */
     public function setUpdatedAt($updated_at): void
     {
-        $this->{$this->getUpdatedAtFieldName()} = (int) $updated_at;
+        $this->setTimeField($updated_at, $this->getUpdatedAtFieldName());
+    }
+
+    /**
+     * Set time in object field.
+     *
+     * @param int|string|\DateTime|null $time
+     * @param string                    $fieldName
+     */
+    private function setTimeField($time, string $fieldName): void
+    {
+        if ($time instanceof \DateTime) {
+            $this->{$fieldName} = $time;
+
+            return;
+        }
+
+        $this->{$fieldName} = new \DateTime();
+
+        if (\is_numeric($time)) {
+            $this->{$fieldName}->setTimestamp($time);
+        }
+
+        if (\is_string($time)) {
+            $this->{$fieldName}->setTimestamp(\strtotime($time));
+        }
     }
 }
