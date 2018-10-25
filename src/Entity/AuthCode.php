@@ -8,8 +8,8 @@ use League\OAuth2\Server\Entities\AuthCodeEntityInterface;
 use League\OAuth2\Server\Entities\ClientEntityInterface;
 use League\OAuth2\Server\Entities\ScopeEntityInterface;
 use League\OAuth2\Server\Repositories\ClientRepositoryInterface;
-use Psr\Container\ContainerInterface;
 use Openapi\Annotations as OA;
+use Psr\Container\ContainerInterface;
 
 /**
  * Class AuthCode.

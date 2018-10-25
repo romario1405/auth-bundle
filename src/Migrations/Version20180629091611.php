@@ -47,7 +47,7 @@ final class Version20180629091611 extends AbstractMigration
         $users->addColumn('avatar', Type::STRING)
             ->setNotnull(false)
             ->setLength(2000);
-        $users->addColumn('api_token', Type::STRING)
+        $users->addColumn('token', Type::STRING)
             ->setNotnull(false)
             ->setLength(2000);
         $users->addColumn('roles', Type::STRING)
@@ -61,7 +61,7 @@ final class Version20180629091611 extends AbstractMigration
             ->setNotnull(false)
             ->setDefault('');
 
-        foreach (['api_token_expire_at', 'last_login', 'created_at', 'updated_at'] as $columnName) {
+        foreach (['token_expire_at', 'last_login', 'created_at', 'updated_at'] as $columnName) {
             $notNull = $columnName !== 'created_at';
             $users->addColumn($columnName, Type::BIGINT)
                 ->setLength(20)

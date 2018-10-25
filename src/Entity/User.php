@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace sonrac\Auth\Entity;
 
 use League\OAuth2\Server\Entities\UserEntityInterface;
-use Psr\Container\ContainerInterface;
 use Openapi\Annotations as OA;
+use Psr\Container\ContainerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -65,7 +65,7 @@ class User implements UserEntityInterface, UserInterface
      *
      * @var string
      */
-    const ROLE_ROOT = 'ROLE_ROOT';
+    public const ROLE_ROOT = 'ROLE_ROOT';
 
     /**
      * User status active.
@@ -191,7 +191,7 @@ class User implements UserEntityInterface, UserInterface
      *
      * @OA\Property(example="example-token")
      */
-    protected $api_token;
+    protected $token;
 
     /**
      * Created time.
@@ -218,7 +218,7 @@ class User implements UserEntityInterface, UserInterface
      *
      * @OA\Property(format="bigInt", example="1529397813")
      */
-    protected $api_token_expire_at;
+    protected $token_expire_at;
 
     /**
      * Birth date.
@@ -464,7 +464,7 @@ class User implements UserEntityInterface, UserInterface
      */
     public function getSalt()
     {
-        return $this->getContainer()->get('service_container')->get('oauth.pass_salt') ?? null;
+        return $this->getContainer()->get('service_container')->getParameter('oauth.pass_salt') ?? null;
     }
 
     /**
@@ -480,7 +480,7 @@ class User implements UserEntityInterface, UserInterface
     /**
      * {@inheritdoc}
      */
-    public function eraseCredentials()
+    public function eraseCredentials(): void
     {
     }
 
@@ -489,19 +489,19 @@ class User implements UserEntityInterface, UserInterface
      *
      * @return string
      */
-    public function getApiToken(): string
+    public function getToken(): string
     {
-        return $this->api_token;
+        return $this->token;
     }
 
     /**
      * Set user api token.
      *
-     * @param string $api_token
+     * @param string $token
      */
-    public function setApiToken(string $api_token): void
+    public function setToken(string $token): void
     {
-        $this->api_token = $api_token;
+        $this->token = $token;
     }
 
     /**
@@ -509,19 +509,19 @@ class User implements UserEntityInterface, UserInterface
      *
      * @return int
      */
-    public function getApiTokenExpireAt(): ?int
+    public function getTokenExpireAt(): ?int
     {
-        return $this->api_token_expire_at;
+        return $this->token_expire_at;
     }
 
     /**
      * Set expire date for user api token.
      *
-     * @param int $api_token_expire_at
+     * @param int $token_expire_at
      */
-    public function setApiTokenExpireAt(int $api_token_expire_at): void
+    public function setTokenExpireAt(int $token_expire_at): void
     {
-        $this->api_token_expire_at = $api_token_expire_at;
+        $this->token_expire_at = $token_expire_at;
     }
 
     /**

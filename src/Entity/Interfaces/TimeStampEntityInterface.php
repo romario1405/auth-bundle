@@ -6,8 +6,6 @@ namespace sonrac\Auth\Entity\Interfaces;
 
 /**
  * Interface TimeStampEntityInterface.
- *
- * @package sonrac\Auth\Entity\Interfaces
  */
 interface TimeStampEntityInterface
 {

@@ -103,8 +103,8 @@ class GenerateKeyTest extends BaseUnitTester
         $this->assertEmpty($output);
 
         $arguments = [
-            '--force' => null,
-            '--disable-out' => null
+            '--force'       => null,
+            '--disable-out' => null,
         ];
 
         if ($withPhrase) {

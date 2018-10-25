@@ -30,12 +30,6 @@ services:
     arguments: ['@doctrine']
     tags: ['doctrine.repository_service']
 
-  sonrac\Auth\Repository\Users:
-    alias: League\OAuth2\Server\Repositories\UserRepositoryInterface
-    public: true
-#    arguments: ['@doctrine']
-#    tags: ['doctrine.repository_service']
-
   League\OAuth2\Server\Entities\ClientEntityInterface:
     class: sonrac\Auth\Entity\Client
     public: true
@@ -57,10 +51,19 @@ services:
     class: sonrac\Auth\Entity\AuthCode
     public: true
     arguments: ['@service_container']
+
   sonrac_auth.custom_token_validator:
     class: sonrac\Auth\Security\TokenValidator
     public: true
     arguments: ['@League\OAuth2\Server\Repositories\AccessTokenRepositoryInterface','%sonrac_auth.header_token_name%']
+
+  sonrac\Auth\Security\OAuth2Listener:
+      arguments:
+        - '@security.token_storage'
+        - '@security.authentication.manager'
+      public: false
+  sonrac\Auth\Security\OAuth2AuthenticationProvider:
+    public: false
 
   sonrac_auth.resource_server:
     class: League\OAuth2\Server\ResourceServer

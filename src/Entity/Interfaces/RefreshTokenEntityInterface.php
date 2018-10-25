@@ -8,5 +8,4 @@ use League\OAuth2\Server\Entities\RefreshTokenEntityInterface as BaseRefreshToke
 
 interface RefreshTokenEntityInterface extends TimeStampEntityInterface, BaseRefreshTokenEntityInterface
 {
-
 }

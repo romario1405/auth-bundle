@@ -7,9 +7,8 @@ namespace sonrac\Auth\Providers\Exception;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 
 /**
- * Class UnsupportedException
+ * Class UnsupportedException.
  */
 class UnsupportedException extends UnsupportedUserException
 {
-
 }

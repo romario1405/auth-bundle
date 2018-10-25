@@ -197,7 +197,8 @@ final class Php72Config extends \PhpCsFixer\Config
 $config = new Php72Config();
 
 $config->getFinder()->in([
-    __DIR__
+    __DIR__.'/src',
+    __DIR__.'/tests',
 ])->exclude(__DIR__.'/tests/app/resources');
 
 return $config

@@ -55,7 +55,7 @@ class OAuth2Authenticator extends AbstractGuardAuthenticator
      */
     public function supports(Request $request): bool
     {
-        #return $request->headers->has($this->tokenName);
+        //return $request->headers->has($this->tokenName);
         return true;
     }
 
@@ -65,7 +65,7 @@ class OAuth2Authenticator extends AbstractGuardAuthenticator
     public function getCredentials(Request $request)
     {
         return [
-            'token' => $request->headers->all()
+            'token' => $request->headers->all(),
         ];
     }
 
@@ -124,7 +124,7 @@ class OAuth2Authenticator extends AbstractGuardAuthenticator
     {
         $data = [
             'status' => false,
-            'error'  => strtr($exception->getMessageKey(), $exception->getMessageData())
+            'error'  => \strtr($exception->getMessageKey(), $exception->getMessageData()),
         ];
 
         return new JsonResponse($data, Response::HTTP_FORBIDDEN);

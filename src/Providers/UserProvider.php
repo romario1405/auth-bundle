@@ -61,14 +61,12 @@ class UserProvider implements OAuthUserProviderInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function loadByToken(string $token)
     {
         $users = $this->userRepository->findBy(['api_token' => $token]);
 
-        return count($users) ? $users[0] : null;
+        return \count($users) ? $users[0] : null;
     }
-
-
 }

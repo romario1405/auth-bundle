@@ -7,11 +7,11 @@ namespace sonrac\Auth\Security;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface;
-use \Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Http\Firewall\ListenerInterface;
 
 /**
- * Class OAuthAuthenticationListener
+ * Class OAuthAuthenticationListener.
  */
 class OAuthAuthenticationListener implements ListenerInterface
 {
@@ -26,7 +26,7 @@ class OAuthAuthenticationListener implements ListenerInterface
     private $authenticationManager;
 
     /**
-     * Uniquely identifies the secured area
+     * Uniquely identifies the secured area.
      *
      * @var string
      */
@@ -44,9 +44,9 @@ class OAuthAuthenticationListener implements ListenerInterface
         AuthenticationManagerInterface $authenticationManager,
         ContainerInterface $container
     ) {
-        $this->tokenStorage = $tokenStorage;
+        $this->tokenStorage          = $tokenStorage;
         $this->authenticationManager = $authenticationManager;
-        $this->container = $container;
+        $this->container             = $container;
     }
 
     public function handle(GetResponseEvent $event)

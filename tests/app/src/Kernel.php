@@ -2,6 +2,7 @@
 
 namespace sonrac\Auth\Tests\App;
 
+use sonrac\Auth\Security\OAuth2SecurityFactory;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Config\Resource\FileResource;
@@ -107,5 +108,13 @@ class Kernel extends BaseKernel
         $routes->import($confDir.'/{routes}/*'.self::CONFIG_EXTS, '/', 'glob');
         $routes->import($confDir.'/{routes}/'.$this->getEnvironment().'/**/*'.self::CONFIG_EXTS, '/', 'glob');
         $routes->import($confDir.'/{routes}'.self::CONFIG_EXTS, '/', 'glob');
+    }
+
+    protected function build(ContainerBuilder $container)
+    {
+        parent::build($container);
+
+        $ext = $container->getExtension('security');
+        $ext->addSecurityListenerFactory(new OAuth2SecurityFactory());
     }
 }

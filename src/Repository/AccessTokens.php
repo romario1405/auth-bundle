@@ -9,7 +9,6 @@ use League\OAuth2\Server\Entities\AccessTokenEntityInterface;
 use League\OAuth2\Server\Entities\ClientEntityInterface;
 use League\OAuth2\Server\Entities\Traits\TokenEntityTrait;
 use League\OAuth2\Server\Repositories\AccessTokenRepositoryInterface;
-use Psr\Container\ContainerInterface;
 use sonrac\Auth\Entity\AccessToken;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -129,6 +128,6 @@ class AccessTokens extends ServiceEntityRepository implements AccessTokenReposit
             throw new \InvalidArgumentException('Token not found');
         }
 
-        return (bool)$entity->isRevoked();
+        return (bool) $entity->isRevoked();
     }
 }

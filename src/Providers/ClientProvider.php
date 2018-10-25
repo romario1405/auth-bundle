@@ -8,8 +8,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use League\OAuth2\Server\Entities\ClientEntityInterface;
 use League\OAuth2\Server\Repositories\ClientRepositoryInterface;
 use sonrac\Auth\Providers\Exception\UnsupportedException;
-use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
-use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -43,7 +41,7 @@ class ClientProvider implements ClientProviderInterface
         EntityManagerInterface $entityManager
     ) {
         $this->clientRepository = $clientRepository;
-        $this->em = $entityManager;
+        $this->em               = $entityManager;
     }
 
     /**
@@ -89,7 +87,7 @@ class ClientProvider implements ClientProviderInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function loadUserByUsername($username)
     {
@@ -97,7 +95,7 @@ class ClientProvider implements ClientProviderInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function refreshUser(UserInterface $user)
     {

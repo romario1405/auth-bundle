@@ -16,7 +16,8 @@
     "symfony/psr-http-message-bridge": "^1.0",
     "zendframework/zend-diactoros": "^1.8",
     "sensio/framework-extra-bundle": "^5.2",
-    "symfony/validator": "^4.0"
+    "symfony/validator": "^4.0",
+    "symfony/profiler-pack": "^1.0"
   },
   "require-dev": {
     "refinery29/php-cs-fixer-config": "^0.6.7",
@@ -38,7 +39,7 @@
   "minimum-stability": "stable",
   "scripts": {
     "full-check": "php FullCheckProject.php",
-    "fix-code": "php-cs-fixer fix",
+    "fix-review": "php-cs-fixer fix",
     "test": "phpunit --color=never --coverage-text",
     "test-coverage-html": "phpunit --coverage-html coverage",
     "review": "phpcs src && phpcs tests",

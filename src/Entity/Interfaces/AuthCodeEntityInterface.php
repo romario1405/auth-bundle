@@ -7,11 +7,8 @@ namespace sonrac\Auth\Entity\Interfaces;
 use League\OAuth2\Server\Entities\AuthCodeEntityInterface as BaseAuthCodeEntityInterface;
 
 /**
- * Interface AuthCodeEntityInterface
- *
- * @package sonrac\Auth\Entity\Interfaces
+ * Interface AuthCodeEntityInterface.
  */
 interface AuthCodeEntityInterface extends TimeStampEntityInterface, BaseAuthCodeEntityInterface
 {
-
 }

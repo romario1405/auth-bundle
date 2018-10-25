@@ -7,11 +7,8 @@ namespace sonrac\Auth\Entity\Interfaces;
 use League\OAuth2\Server\Entities\ClientEntityInterface as BaseClientEntityInterface;
 
 /**
- * Interface ClientEntityInterface
- *
- * @package sonrac\Auth\Entity\Interfaces
+ * Interface ClientEntityInterface.
  */
 interface ClientEntityInterface extends TimeStampEntityInterface, BaseClientEntityInterface
 {
-
 }

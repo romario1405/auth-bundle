@@ -3,10 +3,11 @@
 declare(strict_types=1);
 
 namespace sonrac\Auth\Tests\Functional;
+
 use sonrac\Auth\Entity\Client;
 
 /**
- * Class AbstractSecurityControllerTest
+ * Class AbstractSecurityControllerTest.
  */
 abstract class AbstractSecurityControllerTest extends BaseFunctionalTester
 {
@@ -35,7 +36,8 @@ abstract class AbstractSecurityControllerTest extends BaseFunctionalTester
     /**
      * Get access token.
      */
-    protected function getToken(): string {
+    protected function getToken(): string
+    {
         if ($this->token) {
             return $this->token;
         }

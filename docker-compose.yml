@@ -9,6 +9,7 @@ services:
       XDEBUG_REMOTE_HOST: ${REAL_IP}
       XDEBUG_ENABLE: 1
       PROJECT_DIR_ROOT: /home/infomir/src
+      PROJECT_NAME: auth-bundle
     deploy:
       mode: replicated
       replicas: 1

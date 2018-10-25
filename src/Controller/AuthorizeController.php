@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace sonrac\Auth\Controller;
 
-use Psr\Http\Message\ServerRequestInterface;
 use Openapi\Annotations as OA;
+use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Zend\Diactoros\Response;
 

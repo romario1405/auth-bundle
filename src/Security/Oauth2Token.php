@@ -2,23 +2,18 @@
 
 declare(strict_types=1);
 
-namespace sonrac\Auth\Storage;
+namespace sonrac\Auth\Security;
 
 use Symfony\Component\Security\Core\Authentication\Token\AbstractToken;
 
-/**
- * Class UserResource.
- */
-class UserResource extends AbstractToken
+class Oauth2Token extends AbstractToken
 {
-    /**
-     * UserResource constructor.
-     *
-     *
-     * @param array $roles
-     *
-     * @throws \InvalidArgumentException
-     */
+    public $created;
+
+    public $digest;
+
+    public $nonce;
+
     public function __construct(array $roles = [])
     {
         parent::__construct($roles);
@@ -26,9 +21,6 @@ class UserResource extends AbstractToken
         $this->setAuthenticated(\count($roles) > 0);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getCredentials()
     {
         return '';

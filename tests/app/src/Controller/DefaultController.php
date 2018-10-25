@@ -2,7 +2,6 @@
 
 namespace sonrac\Auth\Tests\App\Controller;
 
-use sonrac\Auth\Repository\Users;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -18,10 +17,10 @@ class DefaultController extends AbstractController
         return $this->json([]);
     }
 
-    public function security(Request $request) {
-
+    public function security(Request $request)
+    {
         return $this->json([
-            'status' => true
+            'status' => true,
         ]);
     }
 }
