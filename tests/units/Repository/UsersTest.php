@@ -56,8 +56,8 @@ class UsersTest extends BaseUnitTester
 
         $client = $this->clientsRepository->find('Test Client');
         $this->repository->getUserEntityByUserCredentials(
-            'user',
-            'password',
+            'username',
+            'pass',
             Client::GRANT_CLIENT_CREDENTIALS,
             $client
         );
