@@ -22,6 +22,9 @@ services:
     synthetic: true
   sonrac_seed_command:
     class: sonrac\SimpleSeed\SeedCommand
+  sonrac\Auth\Repository\Users:
+    autowire: true
+    tags: ['doctrine.repository_service']
 
   # authentication failure event listener
 #  admin.security.authentication_event_listener:

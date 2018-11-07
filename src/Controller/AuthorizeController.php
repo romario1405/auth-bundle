@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace sonrac\Auth\Controller;
 
 use Psr\Http\Message\ServerRequestInterface;
-use Openapi\Annotations as OA;
+use OpenApi\Annotations as OA;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Zend\Diactoros\Response;
 
@@ -26,6 +26,7 @@ use Zend\Diactoros\Response;
  * @OA\SecurityScheme(
  *     securityScheme="oauth2",
  *     name="oauth2",
+ *
  *     type="oauth2",
  *     description="OAuth2",
  *     @OA\Flow(

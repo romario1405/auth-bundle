@@ -2,7 +2,9 @@ version: "3"
 
 services:
   fpm:
-    image: sonrac/infomir-php:php-fpm-7.1
+    image: infomir/fpm:7.1
+    environment:
+      PROJECT_NAME: auth-bundle
     volumes:
       - ./:/home/infomir
     deploy:
@@ -19,7 +21,7 @@ services:
     image: sonrac/infomir-nginx
     volumes:
      - ./:/home/infomir
-     - ./.docker/vhost.conf:/etc/nginx/conf.d/default.conf
+     - ./.docker/vhost.conf:/etc/nginx/conf.d/auth.conf
     depends_on:
       - fpm
     deploy:
